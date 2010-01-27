@@ -32,7 +32,7 @@ parameter is a hash of rules to filter the logfile with.
 To use rules, simply build a hash with options you want to filter with as follows:
 
   rules = {}
-  rules[:hour]   = 11..13         # only accept hits between 1100 and 1300 hours
+  rules[:hour]   = 11..13         # only accept hits between 11:00 and 13:59 hours
   rules[:day]    = 21             # only accept hits where the day is 21
   rules[:date]   = "12/Jan/2010"  # only accept hits on Jan 12, 2010
   rules[:method] = "GET"          # only accept hits where the request method is GET
