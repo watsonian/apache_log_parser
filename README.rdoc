@@ -17,6 +17,7 @@ From there, you would use it as follows:
     parsed[:hour]       #=> 14
     parsed[:zone]       #=> "-0800"
     parsed[:method]     #=> "GET"
+    parsed[:http_ver]   #=> "1.1"
     parsed[:resource]   #=> "/some/page.php"
     parsed[:status]     #=> 200
     parsed[:size]       #=> "7047"
