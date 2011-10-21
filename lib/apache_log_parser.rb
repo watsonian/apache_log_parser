@@ -3,7 +3,7 @@ class ApacheLogParser
     rules = process_rules(rules)
     parse_file(filename, rules, &block)
   end
-  
+
   private
     def self.parse_line(line)
       m = line.match(/^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}).*?(([0-9]{1,2})\/(.*?)\/([0-9]{4})):(([0-9]{2}):[0-9]{2}:[0-9]{2})\s*(.*?)\]\s*"([\w]*)\s(.*?)\sHTTP\/(.*?)"\s([0-9]{3})\s(.*?)\s*"(.*?)"\s*"(.*?)"/)
@@ -27,14 +27,14 @@ class ApacheLogParser
         {}
       end
     end
-  
+
     def self.parse_file(filename, rules={}, &block)
       File.foreach(filename) do |line|
         parsed = parse_line(line)
         if rules.any?
           # stop parsing the file if we're past the designated hour range
           break if rules[:hour] && Array(parsed[:hour]).last > Array(rules[:hour]).last
-          
+
           # go to the next line if there are any rules that are not matched by this line
           next if rules.reject{|k,v| Array(v).include?(parsed[k]) }.any?
         end

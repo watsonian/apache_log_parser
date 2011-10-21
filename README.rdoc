@@ -25,7 +25,7 @@ From there, you would use it as follows:
     parsed[:user_agent] #=> "Mozilla/5.0 (Macintosh; U; Intel..."
   end
 
-The logfile parameter is simply the path to the logfile in question and the rules 
+The logfile parameter is simply the path to the logfile in question and the rules
 parameter is a hash of rules to filter the logfile with.
 
 = Using Rules
@@ -39,7 +39,7 @@ To use rules, simply build a hash with options you want to filter with as follow
   rules[:method] = "GET"          # only accept hits where the request method is GET
   rules[:status] = 404            # only accept hits where the status response is 404
 
-Rules are inclusive, so only hits where ALL rules are met will be kept. From there, 
+Rules are inclusive, so only hits where ALL rules are met will be kept. From there,
 you would simply pass the rules hash into the parse method as shown above. The logfile
 is read one line at a time, so the memory footprint is quite small and can easily handle
 large logfiles (sizes as large as 6GB have been tested). The larger the file, the longer
