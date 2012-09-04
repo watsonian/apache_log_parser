@@ -4,7 +4,9 @@ This is a library designed to easily parse and access standard Apache log files.
 
 To get started, require the library:
 
-    require 'apache_log_parser'
+```ruby
+require 'apache_log_parser'
+```
 
 From there, you would use it as follows:
 
