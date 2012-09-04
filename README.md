@@ -1,43 +1,47 @@
-= Getting Started
+# Getting Started
 
 This is a library designed to easily parse and access standard Apache log files.
 
 To get started, require the library:
 
-  require 'apache_log_parser'
+    require 'apache_log_parser'
 
 From there, you would use it as follows:
 
-  ApacheLogParser.parse(logfile, rules) do |parsed|
-    parsed[:ip]         #=> "12.12.12.12"
-    parsed[:date]       #=> "21/Jan/2010"
-    parsed[:day]        #=> 21
-    parsed[:month]      #=> "Jan"
-    parsed[:year]       #=> 2010
-    parsed[:hour]       #=> 14
-    parsed[:zone]       #=> "-0800"
-    parsed[:method]     #=> "GET"
-    parsed[:http_ver]   #=> "1.1"
-    parsed[:resource]   #=> "/some/page.php"
-    parsed[:status]     #=> 200
-    parsed[:size]       #=> "7047"
-    parsed[:referer]    #=> "-"
-    parsed[:user_agent] #=> "Mozilla/5.0 (Macintosh; U; Intel..."
-  end
+```ruby
+ApacheLogParser.parse(logfile, rules) do |parsed|
+  parsed[:ip]         #=> "12.12.12.12"
+  parsed[:date]       #=> "21/Jan/2010"
+  parsed[:day]        #=> 21
+  parsed[:month]      #=> "Jan"
+  parsed[:year]       #=> 2010
+  parsed[:hour]       #=> 14
+  parsed[:zone]       #=> "-0800"
+  parsed[:method]     #=> "GET"
+  parsed[:http_ver]   #=> "1.1"
+  parsed[:resource]   #=> "/some/page.php"
+  parsed[:status]     #=> 200
+  parsed[:size]       #=> "7047"
+  parsed[:referer]    #=> "-"
+  parsed[:user_agent] #=> "Mozilla/5.0 (Macintosh; U; Intel..."
+end
+```
 
 The logfile parameter is simply the path to the logfile in question and the rules
 parameter is a hash of rules to filter the logfile with.
 
-= Using Rules
+# Using Rules
 
 To use rules, simply build a hash with options you want to filter with as follows:
 
-  rules = {}
-  rules[:hour]   = 11..13         # only accept hits between 11:00 and 13:59 hours
-  rules[:day]    = 21             # only accept hits where the day is 21
-  rules[:date]   = "12/Jan/2010"  # only accept hits on Jan 12, 2010
-  rules[:method] = "GET"          # only accept hits where the request method is GET
-  rules[:status] = 404            # only accept hits where the status response is 404
+```ruby
+rules = {}
+rules[:hour]   = 11..13         # only accept hits between 11:00 and 13:59 hours
+rules[:day]    = 21             # only accept hits where the day is 21
+rules[:date]   = "12/Jan/2010"  # only accept hits on Jan 12, 2010
+rules[:method] = "GET"          # only accept hits where the request method is GET
+rules[:status] = 404            # only accept hits where the status response is 404
+```
 
 Rules are inclusive, so only hits where ALL rules are met will be kept. From there,
 you would simply pass the rules hash into the parse method as shown above. The logfile
@@ -45,6 +49,6 @@ is read one line at a time, so the memory footprint is quite small and can easil
 large logfiles (sizes as large as 6GB have been tested). The larger the file, the longer
 the parse process will take though.
 
-== Copyright
+=# Copyright
 
-Copyright (c) 2010 Joel Watson. See LICENSE for details.
+Copyright (c) 2012 Joel Watson. See LICENSE for details.
