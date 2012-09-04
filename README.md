@@ -49,6 +49,6 @@ is read one line at a time, so the memory footprint is quite small and can easil
 large logfiles (sizes as large as 6GB have been tested). The larger the file, the longer
 the parse process will take though.
 
-=# Copyright
+# Copyright
 
 Copyright (c) 2012 Joel Watson. See LICENSE for details.
